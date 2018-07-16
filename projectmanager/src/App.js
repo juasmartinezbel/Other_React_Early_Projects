@@ -1,7 +1,5 @@
 //Dependencias:
 	import React, { Component } from 'react';
-		//npm install --save prop-types
-	import PropTypes from 'prop-types';
 
 //Hojas de Estilos
 	import './App.css';
@@ -22,11 +20,32 @@
 	</div>
 */
 class App extends Component {
+
+  constructor(){
+  	//Se definirán los estados de la aplicación.
+  	super(); //SIEMPRE LLAMAR SUPER
+  	this.state={
+  		projects: [
+	  		{
+	  			title: 'Business Website',
+	  			category: 'Web Design'
+	  		},
+	  		{
+	  			title: 'Social',
+	  			category: 'Mobile'
+	  		},
+	  		{
+	  			title: 'Shopping',
+	  			category: 'Web Development'
+	  		}
+  		]
+  	}
+  }
   render() {
     return (
       <div className="App">
         My App
-        <Projects sad="Holi Boli, soy un propi" />
+        <Projects sad=' Holi Boli soy un Propi' projects={this.state.projects}/>
       </div>
     );
   }
