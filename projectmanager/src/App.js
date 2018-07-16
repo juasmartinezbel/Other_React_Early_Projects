@@ -15,6 +15,7 @@ class App extends Component {
   	this.state={
   		projects: []
   	}
+  	this.handleAddProject=this.handleAddProject.bind(this);
   }
 
   //Life Cycle, se ejecuta por cada renderización
@@ -37,10 +38,21 @@ class App extends Component {
 	  	});
   }
 
+  //Esta función se dispara cuando desde un componente AddProject se hace submit
+  handleAddProject(project){
+	console.log("Se ha recibido: ")  	
+  	console.log(project);
+
+  	//Se actualiza el this.state.projects haciendole push de lo nuevo
+  	let projects = this.state.projects;
+  	projects.push(project);
+  	this.setState({projects:projects});
+  }
+
   render() {
     return (
       <div className="App">
-        <AddProject />
+        <AddProject addToProject={this.handleAddProject}/>
         <Projects sad=' Holi Boli soy un Propi' projects={this.state.projects}/>
       </div>
     );
