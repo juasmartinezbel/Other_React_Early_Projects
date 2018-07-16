@@ -1,13 +1,13 @@
 //Dependencias:
 import React, { Component } from 'react';
 
+//Sub-Componentes
+import ProjectItem from './ProjectItem';
+
 //NO necesita su propio css. Ese puede ser el general de APP
 
 class Projects extends Component {
   render() {
-
-    console.log(this.props); //Me retorna sad y projects
-    
     let projectItems; //Variable limitada al bloque
     
     console.log("Proyectos: ");
@@ -16,15 +16,28 @@ class Projects extends Component {
 
       //Mapeo para asignar a variable
       projectItems = this.props.projects.map(project => {
-        console.log(project) // Item actual
+        //Siempre debe tener un valor llave
+        return (
+            <ProjectItem key = {project.title} project = {project} />
+          );
       }); 
+
+      /*
+      *
+      * App.js le envía los props como argumento a Projects.js llamado this.props.projects
+      * Projects.js hace un mapeo de this.props.projects 
+      * Se aplican los props a ProjectItem.js
+      * projectItems crea un componente de cada this.props.projects sacado de ProjectItem.js
+      *
+      */
 
     }
     
+
+
     return (
       <div className="Projects">
-        My Projects
-        {this.props.sad}
+        {projectItems}
       </div>
     );
   }
