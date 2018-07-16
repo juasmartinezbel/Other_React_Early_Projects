@@ -1,6 +1,7 @@
 //Dependencias:
 	import React, { Component } from 'react';
 	import uuid from 'uuid'; //npm install --save uuid: Genera ids
+	import $ from 'jquery'; //npm install jquery --save
 
 //Hojas de Estilos
 	import './App.css';
@@ -9,20 +10,21 @@
 	import Projects from './Components/Projects'
 	import AddProject from './Components/AddProject'
 
+
 class App extends Component {
 
   constructor(){
   	super(); 
   	this.state={
-  		projects: []
+  		projects: [],
+  		todos:[]
   	}
   	this.handleAddProject=this.handleAddProject.bind(this);
   	this.handleDeleteProject=this.handleDeleteProject.bind(this);
   }
 
-  //Life Cycle, se ejecuta por cada renderización
-  //Mejor mantener esto aparte del constructor
-  componentWillMount(){
+  //Tomar todos los proyectos default, pero desde otra función
+  getProjects(){
   	this.setState({
 			projects: [
 	  			{
@@ -41,6 +43,32 @@ class App extends Component {
 		  			category: 'Web Development'
 		  		}]
 	  	});
+  }
+
+  //Obtiene los todos del API a llamar
+  getTodos(){
+  	$.ajax({
+  		url: 'https://jsonplaceholder.typicode.com/todos',
+  		dataType: 'json',
+  		cache: false,
+  		success: function(data){
+  			this.setState({todos:data}, function(){
+  				console.log(this.state);
+  			});
+  		}.bind(this),
+  		error: function(xhr,status,err){console.log(err);}
+  	});
+  }
+
+  //Life Cycle, se ejecuta por cada renderización
+  //Mejor mantener esto aparte del constructor
+  componentWillMount(){
+	this.getProjects();  	
+  	this.getTodos();
+  }
+
+  componentDidMount(){
+  	this.getTodos();
   }
 
   //Esta función se dispara cuando desde un componente AddProject se hace submit
@@ -64,6 +92,7 @@ class App extends Component {
 	projects.splice(index,1); //Extirpa el elemento
 	this.setState({projects:projects});
   }
+
   render() {
     return (
       <div className="App">
