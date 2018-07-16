@@ -50,7 +50,7 @@ class AddProject extends Component {
 		});
 
 		return (
-		  <li className="AddProject">
+		  <div className="AddProject">
 		    <h3>Add Project</h3>
 		    <form onSubmit={this.handleSubmit}>
 		    	<div>
@@ -64,10 +64,11 @@ class AddProject extends Component {
 		    			{categoryOptions}
 		    		</select>
 		    	</div>
-
+		    	<br/>
 		    	<input type="submit" value="Submit"/>
+		    	<br/>
 		    </form>
-		  </li>
+		  </div>
 		);
 	}
 }
