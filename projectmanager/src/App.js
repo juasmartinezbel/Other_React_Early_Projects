@@ -25,22 +25,29 @@ class App extends Component {
   	//Se definirán los estados de la aplicación.
   	super(); //SIEMPRE LLAMAR SUPER
   	this.state={
-  		projects: [
-	  		{
-	  			title: 'Business Website',
-	  			category: 'Web Design'
-	  		},
-	  		{
-	  			title: 'Social',
-	  			category: 'Mobile'
-	  		},
-	  		{
-	  			title: 'Shopping',
-	  			category: 'Web Development'
-	  		}
-  		]
+  		projects: []
   	}
   }
+
+  //Life Cycle, se ejecuta por cada renderización
+  componentWillMount(){
+  	this.setState({
+			projects: [
+	  			{
+		  			title: 'Business Website',
+		  			category: 'Web Design'
+		  		},
+		  		{
+		  			title: 'Social',
+		  			category: 'Mobile'
+		  		},
+		  		{
+		  			title: 'Shopping',
+		  			category: 'Web Development'
+		  		}]
+	  	});
+  }
+
   render() {
     return (
       <div className="App">
