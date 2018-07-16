@@ -5,31 +5,20 @@
 	import './App.css';
 
 //Components
-	import Projects from './Components/Projects' //No se necesita el .js
+	import Projects from './Components/Projects'
+	import AddProject from './Components/AddProject'
 
-//Solo puede haber un main <div className="Archivo">
-
-//Pasar un argumento = Props
-/*
-	En App: 
-	<Component attribute = "Argument">
-
-	En Componente:
-	<div...>
-		{this.props.attribute}
-	</div>
-*/
 class App extends Component {
 
   constructor(){
-  	//Se definirán los estados de la aplicación.
-  	super(); //SIEMPRE LLAMAR SUPER
+  	super(); 
   	this.state={
   		projects: []
   	}
   }
 
   //Life Cycle, se ejecuta por cada renderización
+  //Mejor mantener esto aparte del constructor
   componentWillMount(){
   	this.setState({
 			projects: [
@@ -39,7 +28,7 @@ class App extends Component {
 		  		},
 		  		{
 		  			title: 'Social',
-		  			category: 'Mobile'
+		  			category: 'Mobile Development'
 		  		},
 		  		{
 		  			title: 'Shopping',
@@ -51,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        My App
+        <AddProject />
         <Projects sad=' Holi Boli soy un Propi' projects={this.state.projects}/>
       </div>
     );
