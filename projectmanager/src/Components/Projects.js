@@ -7,6 +7,11 @@ import ProjectItem from './ProjectItem';
 //NO necesita su propio css. Ese puede ser el general de APP
 
 class Projects extends Component {
+  deleteProject(id){
+    //Se envia ahora la instrucción de eliminar a la App
+    this.props.onDelete(id);
+  }
+
   render() {
     let projectItems; //Variable limitada al bloque
     
@@ -18,7 +23,7 @@ class Projects extends Component {
       projectItems = this.props.projects.map(project => {
         //Siempre debe tener un valor llave
         return (
-            <ProjectItem key = {project.id} project = {project} />
+            <ProjectItem onDelete={this.deleteProject.bind(this)} key = {project.id} project = {project} />
           );
       }); 
 

@@ -17,6 +17,7 @@ class App extends Component {
   		projects: []
   	}
   	this.handleAddProject=this.handleAddProject.bind(this);
+  	this.handleDeleteProject=this.handleDeleteProject.bind(this);
   }
 
   //Life Cycle, se ejecuta por cada renderización
@@ -53,11 +54,21 @@ class App extends Component {
   	this.setState({projects:projects});
   }
 
+  //Esta función se dispara cuando se desea eliminar un item
+  handleDeleteProject(id){
+	console.log("Se ha recibido la instrucción para eliminar")  
+
+	//Se actualiza el this.state.projects buscando el id del proyecto a eliminar.
+	let projects = this.state.projects;
+	let index = projects.findIndex(x=>x.id===id);
+	projects.splice(index,1); //Extirpa el elemento
+	this.setState({projects:projects});
+  }
   render() {
     return (
       <div className="App">
         <AddProject addToProject={this.handleAddProject}/>
-        <Projects sad=' Holi Boli soy un Propi' projects={this.state.projects}/>
+        <Projects onDelete={this.handleDeleteProject} projects={this.state.projects}/>
       </div>
     );
   }
