@@ -1,9 +1,15 @@
 //Dependencias:
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 
 class ProjectItem extends Component {
+	
+	static propTypes = {
+      project: PropTypes.object.isRequired,
+      onDelete: PropTypes.func
+    }
 
   deleteProject(id){
   	 console.log("Deleted");
@@ -22,6 +28,7 @@ class ProjectItem extends Component {
     );
   }
 }
+
 
 export default ProjectItem;
 /*

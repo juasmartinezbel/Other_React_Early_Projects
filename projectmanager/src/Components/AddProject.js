@@ -1,9 +1,16 @@
 //Dependencias:
 	import React, { Component } from 'react';
 	import uuid from 'uuid';
+	import PropTypes from 'prop-types';
 
 
 class AddProject extends Component {
+
+	static propTypes = {
+      categories: PropTypes.array.isRequired,
+      addProject: PropTypes.func
+    }
+
 
 	constructor(){
 		super();

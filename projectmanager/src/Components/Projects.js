@@ -1,12 +1,20 @@
 //Dependencias:
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 //Sub-Componentes
 import ProjectItem from './ProjectItem';
 
 //NO necesita su propio css. Ese puede ser el general de APP
 
 class Projects extends Component {
+    //Validaciones, ¿Qué debe ser cada cosa?
+    static propTypes = {
+      projects: PropTypes.array.isRequired,
+      onDelete: PropTypes.func
+    }
+
+
+
   deleteProject(id){
     //Se envia ahora la instrucción de eliminar a la App
     this.props.onDelete(id);
