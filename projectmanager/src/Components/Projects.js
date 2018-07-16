@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+//Dependencias:
+	import React, { Component } from 'react';
+		//npm install --save prop-types
+	import PropTypes from 'prop-types';
+
 //NO necesita su propio css. Ese puede ser el general de APP
 
 class Projects extends Component {
@@ -6,6 +10,7 @@ class Projects extends Component {
     return (
       <div className="Projects">
         My Projects
+        {this.props.sad}
       </div>
     );
   }
