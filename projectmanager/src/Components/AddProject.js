@@ -1,6 +1,6 @@
 //Dependencias:
-import React, { Component } from 'react';
-
+	import React, { Component } from 'react';
+	import uuid from 'uuid';
 
 
 class AddProject extends Component {
@@ -23,7 +23,7 @@ class AddProject extends Component {
 			console.log(this.refs.title.value + " " + this.refs.category.value );
 			this.setState(
 				{newProject:{
-
+					id: uuid.v4(),
 					title: this.refs.title.value,
 					category: this.refs.category.value
 

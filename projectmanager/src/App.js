@@ -1,5 +1,6 @@
 //Dependencias:
 	import React, { Component } from 'react';
+	import uuid from 'uuid'; //npm install --save uuid: Genera ids
 
 //Hojas de Estilos
 	import './App.css';
@@ -24,14 +25,17 @@ class App extends Component {
   	this.setState({
 			projects: [
 	  			{
+	  				id: uuid.v4(),
 		  			title: 'Business Website',
 		  			category: 'Web Design'
 		  		},
 		  		{
+		  			id: uuid.v4(),
 		  			title: 'Social',
 		  			category: 'Mobile Development'
 		  		},
 		  		{
+		  			id: uuid.v4(),
 		  			title: 'Shopping',
 		  			category: 'Web Development'
 		  		}]

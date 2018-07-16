@@ -18,7 +18,7 @@ class Projects extends Component {
       projectItems = this.props.projects.map(project => {
         //Siempre debe tener un valor llave
         return (
-            <ProjectItem key = {project.title} project = {project} />
+            <ProjectItem key = {project.id} project = {project} />
           );
       }); 
 
