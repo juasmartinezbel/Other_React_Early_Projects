@@ -1,12 +1,15 @@
 //Dependencies
 	import React from "react";
 
+//Componentes
+	import Title from "./header/Title"
+
 class Header extends React.Component{
 
 	render(){
 		return (
 			<div>
-				<header>header</header><br/>
+				<Title />
 			</div>
 		);
 	}
