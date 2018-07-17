@@ -1,46 +1,77 @@
-//¿Qué hacemos para que un componente se cambie?
-// ¡CAMBIAR EL ESTADO!
-
-
-//Se necesitarán clases para cambiar el estado de las cosas
-class HelloClass extends React.Component {
+class CounterClass extends React.Component {
 	constructor(props) {
 		super(props);
-
-		//El estado será un objeto, el cual se declara y se le ponen los atributos
-		//Los estados van a cambiar por estado
 		this.state = {
-			nombre: 'Alvaro',
-			saludo: 'Buenos Días'
+			count: 0
 		};
-		this.despedirse = this.despedirse.bind(this);
+
+		this.upCount = this.upCount.bind(this);
+		this.downCount = this.downCount.bind(this);
+		this.resetCount = this.resetCount.bind(this);
 	}
 
-	//Se dispara al despedirse.
-	//Colocar despedirse(){} no cambiará el estado. Lo mejor es ponerlo como dice a continuación:
+	upCount(e) {
+		e.preventDefault(); //Previenen activaciones no deseadas
 
-	despedirse() {
-		alert('adios');
-		//this.state.saludo = 'Hasta Luego' <-- MAL, no se puede hacer directamente
-		this.setState({
-			saludo: 'Hasta Luego'
+		this.setState(
+		//Atrapar el estado previo para modificarlo/actualizarlo
+		function (prevState) {
+			return {
+				count: prevState.count + 1
+			};
 		});
 	}
 
+	downCount(e) {
+		e.preventDefault(); //Previenen activaciones no deseadas
+
+		this.setState(
+		//Atrapar el estado previo para modificarlo/actualizarlo
+		function (prevState) {
+			return {
+				count: prevState.count - 1
+			};
+		});
+	}
+
+	resetCount(e) {
+		e.preventDefault(); //Previenen activaciones no deseadas
+		this.setState({ count: 0 });
+	}
+
 	render() {
-		//Ya que estamos en una clase, se necesita poner this.
-		//Las acciones que afectarán el estado se escriben en el html, en este caso click a despedirse.
-		return (
-			//<h1>Hola {this.props.nombre}</h1>
+		return React.createElement(
+			"div",
+			{ className: "counter" },
 			React.createElement(
-				'h1',
-				{ onClick: this.despedirse },
-				this.state.saludo,
-				' ',
-				this.state.nombre
+				"div",
+				{ className: "count" },
+				this.state.count
+			),
+			React.createElement(
+				"div",
+				{ className: "change counter" },
+				React.createElement(
+					"a",
+					{ href: "#", onClick: this.upCount, className: "upCount" },
+					"Up"
+				),
+				React.createElement("br", null),
+				React.createElement(
+					"a",
+					{ href: "#", onClick: this.downCount, className: "downCount" },
+					"Down"
+				),
+				React.createElement("br", null),
+				React.createElement(
+					"a",
+					{ href: "#", onClick: this.resetCount, className: "resetCount" },
+					"Reset"
+				),
+				React.createElement("br", null)
 			)
 		);
 	}
 }
 
-ReactDOM.render(React.createElement(HelloClass, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(CounterClass, null), document.getElementById('app'));

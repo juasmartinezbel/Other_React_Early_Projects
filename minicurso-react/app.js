@@ -1,39 +1,62 @@
-//¿Qué hacemos para que un componente se cambie?
-// ¡CAMBIAR EL ESTADO!
-
-
-//Se necesitarán clases para cambiar el estado de las cosas
-class HelloClass extends React.Component{
+class CounterClass extends React.Component{
 	constructor(props){
 		super(props);
-
-		//El estado será un objeto, el cual se declara y se le ponen los atributos
-		//Los estados van a cambiar por estado
 		this.state = {
-			nombre: 'Alvaro',
-			saludo: 'Buenos Días'
+			count: 0
 		}
-		this.despedirse = this.despedirse.bind(this);
+
+		this.upCount = this.upCount.bind(this)
+		this.downCount = this.downCount.bind(this)
+		this.resetCount = this.resetCount.bind(this)
 	}
 
-	//Se dispara al despedirse
-	despedirse(){
-		alert('adios');
-		//this.state.saludo = 'Hasta Luego' <-- MAL, no se puede hacer directamente
-		this.setState({
-			saludo: 'Hasta Luego'
-		})
+	upCount(e){
+		e.preventDefault(); //Previenen activaciones no deseadas
+
+		this.setState(
+			//Atrapar el estado previo para modificarlo/actualizarlo
+			function(prevState){
+				return{
+					count: prevState.count +1
+				}
+			}
+		)
+	};
+
+	downCount(e){
+		e.preventDefault(); //Previenen activaciones no deseadas
+
+		this.setState(
+			//Atrapar el estado previo para modificarlo/actualizarlo
+			function(prevState){
+				return{
+					count: prevState.count -1
+				}
+			}
+		)
+	};
+
+	resetCount(e){
+		e.preventDefault(); //Previenen activaciones no deseadas
+		this.setState({count:0});
 	};
 
 	render(){
-		//Ya que estamos en una clase, se necesita poner this.
-		//Las acciones que afectarán el estado se escriben en el html, en este caso click a despedirse.
 		return(
-			//<h1>Hola {this.props.nombre}</h1>
-			<h1 onClick={this.despedirse}>{this.state.saludo} {this.state.nombre}</h1>
-		);
+			<div className="counter">
+				<div className="count">{this.state.count}</div>
+				<div className="change counter">
+					<a href="#" onClick={this.upCount} className="upCount">Up</a>
+					<br/>
+					<a href="#" onClick={this.downCount} className="downCount">Down</a>
+					<br/>
+					<a href="#" onClick={this.resetCount} className="resetCount">Reset</a>
+					<br/>
+
+				</div>
+			</div>
+		)
 	}
 }
 
-
-ReactDOM.render(<HelloClass />, document.getElementById('app'))
+ReactDOM.render(<CounterClass />, document.getElementById('app'))
