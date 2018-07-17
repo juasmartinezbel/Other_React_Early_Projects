@@ -9,7 +9,7 @@ class BLANK extends React.Component{
 	render(){
 		return (
 			<div>
-				<h1>WELCOME</h1><br/>
+				<h1>WELCOME {this.props.name}</h1><br/>
 			</div>
 		);
 	}

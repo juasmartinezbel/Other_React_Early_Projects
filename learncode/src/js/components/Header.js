@@ -5,11 +5,15 @@
 	import Title from "./header/Title"
 
 class Header extends React.Component{
+	constructor(){
+		super();
+	}
 
 	render(){
 		return (
 			<div>
-				<Title />
+				<Title name={this.props.name}/>
+				
 			</div>
 		);
 	}
