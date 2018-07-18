@@ -13,14 +13,15 @@
 
 
 const app = document.getElementById('app');
+//¿Cómo añadir sub-paginas?
 ReactDOM.render(
 	<div>
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/" component={Layout}></Route>
-				<Route exact path="/Featured" component={Featured}></Route>
-				<Route exact path="/Archives" component={Archives}></Route>
-				<Route exact path="/Settings" component={Settings}></Route>
+				<Route path="/Featured" component={Featured}></Route>
+				<Route path="/Archives" component={Archives}></Route>
+				<Route path="/Settings" component={Settings}></Route>
 				<Route component={Page404}></Route>
 			</Switch>
 		</BrowserRouter>
