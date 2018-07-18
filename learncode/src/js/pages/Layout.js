@@ -14,6 +14,17 @@ class Layout extends React.Component{
 		}
 	}
 
+	//Cuando se va a renderizar
+	//El emit de TodoStore llama a este método
+	componentWillMount(){
+		TodoStore.on("change", ()=>{
+			this.setState({
+				todos: TodoStore.getAll()
+			});
+		});
+
+	}
+
 	render(){
 
 		const {todos} = this.state;
