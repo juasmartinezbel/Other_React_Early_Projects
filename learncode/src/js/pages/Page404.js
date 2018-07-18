@@ -1,8 +1,6 @@
 //Dependencies
 	import React from "react";
-//Components
-	import Links from "./Links"
-
+	
 class Page404 extends React.Component{
 	constructor(){
 		super();

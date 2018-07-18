@@ -1,7 +1,5 @@
 //Dependencies
 	import React from "react";
-//Components
-	import Links from "./Links"
 class Featured extends React.Component{
 	constructor(){
 		super();
@@ -11,7 +9,6 @@ class Featured extends React.Component{
 		return (			
 			<div>		
 				<h1>Featured</h1>
-				<Links/>
 			</div>
 		);
 	}

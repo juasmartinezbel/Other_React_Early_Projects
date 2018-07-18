@@ -2,7 +2,8 @@
 	import React from "react";
 
 //Components
-	import Links from "./Links"
+	import Footer from "../components/Footer";
+
 class Layout extends React.Component{
 	constructor(){
 		super();
@@ -10,10 +11,14 @@ class Layout extends React.Component{
 
 	render(){
 		return (			
-			<div>		
-				<h1>TuMamá.zeb</h1>
-				<Links/>
-			</div>
+	      <div>
+	          <div class="row">
+	            <div class="col-lg-12">
+	              <h1>TuMamá.net</h1>
+	            </div>
+	          </div>
+	          <Footer/>
+	      </div>
 		);
 	}
 }

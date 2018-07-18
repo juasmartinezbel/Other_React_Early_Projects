@@ -1,8 +1,8 @@
+
 //Dependencies
 	import React from "react"
 	import ReactDOM from "react-dom";
 	import { BrowserRouter, Route, Switch} from "react-router-dom";
-	import Bootstrap from "../vendor/bootstrap-without-jquery"
 
 //Components
 	import Archives from "./pages/Archives"
@@ -10,30 +10,36 @@
 	import Layout from "./pages/Layout"
 	import Page404 from "./pages/Page404"
 	import Settings from "./pages/Settings"
-
+	import Nav from "./components/Nav"
 
 const app = document.getElementById('app');
 //¿Cómo añadir sub-paginas?
+
+//Hacer estilos en JSX: 
+const containerStyle = {
+    		marginTop: "60px"
+    	  	//También: "margin-top": "60px"
+};
+
 ReactDOM.render(
+	
 	<div>
-		<BrowserRouter>
-			<Switch>
-				<Route exact path="/" component={Layout}></Route>
-				<Route path="/Featured" component={Featured}></Route>
-				{/*
-					<Route exact path="/Archives" component={Archives}></Route>
-					<Route path="/Archives/:article" component={Archives}></Route>
-					Si se desea que el link sea opcional.
 
-					Se puede resumir:
-				*/}
-				<Route path="/Archives/:article?" component={Archives}></Route>
-
-				{/*Se le pueden pasar queris tipo ?*/}
-				<Route path="/Settings" component={Settings}></Route>
-				<Route component={Page404}></Route>
-			</Switch>
+		<BrowserRouter>	
+			<div>
+				<Nav/>
+				<div class="container" style={containerStyle}>
+					<Switch>
+						<Route exact path="/" component={Layout}></Route>
+						<Route path="/Featured" component={Featured}></Route>
+						<Route path="/Archives/:article?" component={Archives}></Route>
+						<Route path="/Settings" component={Settings}></Route>
+						<Route component={Page404}></Route>
+					</Switch>
+				</div>
+			</div>
 		</BrowserRouter>
+		
 	</div>, 
 	app);
 
