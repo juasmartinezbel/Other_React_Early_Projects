@@ -1,6 +1,6 @@
 //Dependencies
 	import React from "react";
-class Featured extends React.Component{
+class Favorites extends React.Component{
 	constructor(){
 		super();
 	}
@@ -8,10 +8,10 @@ class Featured extends React.Component{
 	render(){
 		return (			
 			<div>		
-				<h1>Featured</h1>
+				<h1>Favorites</h1>
 			</div>
 		);
 	}
 }
 
-export default Featured;
+export default Favorites;

@@ -10,7 +10,6 @@ class Page404 extends React.Component{
 		return (			
 			<div>		
 				<h1>Page404</h1>
-				<Links/>
 			</div>
 		);
 	}

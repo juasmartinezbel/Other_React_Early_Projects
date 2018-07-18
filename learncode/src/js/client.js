@@ -5,12 +5,12 @@
 	import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 //Components
-	import Archives from "./pages/Archives"
-	import Featured from "./pages/Featured"
+	import Favorites from "./pages/Favorites"
 	import Layout from "./pages/Layout"
 	import Page404 from "./pages/Page404"
 	import Settings from "./pages/Settings"
 	import Nav from "./components/Nav"
+	import Footer from "./components/Footer"
 
 const app = document.getElementById('app');
 //¿Cómo añadir sub-paginas?
@@ -31,12 +31,13 @@ ReactDOM.render(
 				<div class="container" style={containerStyle}>
 					<Switch>
 						<Route exact path="/" component={Layout}></Route>
-						<Route path="/Featured" component={Featured}></Route>
-						<Route path="/Archives/:article?" component={Archives}></Route>
 						<Route path="/Settings" component={Settings}></Route>
+						<Route path="/Favorites/:article?" component={Favorites}></Route>
 						<Route component={Page404}></Route>
 					</Switch>
+					<Footer/>
 				</div>
+
 			</div>
 		</BrowserRouter>
 		
