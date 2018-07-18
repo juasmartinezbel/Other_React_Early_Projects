@@ -1,6 +1,8 @@
 //Dependencies
 	import {EventEmitter} from "events";
 
+//Debemos hacer que el TodoStore escuche al Dispatcher
+import dispatcher from '../dispatcher'
 // Los componentes deben escuchar los eventos del Store y cambiar el almacenamiento
 class TodoStore extends EventEmitter{
 	constructor(){
@@ -33,8 +35,25 @@ class TodoStore extends EventEmitter{
 	getAll(){
 		return this.todos;
 	}
+
+	//Poder controlar las acciones
+	//Estar subscrito a los dispatcher
+	handleActions(action){
+
+		console.log("TodoStore received and action", action);
+
+		//Podemos controlarlo para que sea del tipo que nos importa
+		switch(action.type){
+			case "CREATE_TODO":{
+				this.createTodo(action.text);
+				//Probar con: dispatcher.dispatch({type:"CREATE_TODO", text: "new todo"})
+			}
+		}
+	}
 }
 const todoStore = new TodoStore;
-window.todoStore = todoStore; //Probar en consola con todoStore.createTodo("Test")
+//Registrar como el escuchador.
+dispatcher.register(todoStore.handleActions.bind(todoStore));
+window.dispatcher = dispatcher; //Probar en consola con dispatcher.dispatch({type: "some event"});
 
 export default todoStore;
