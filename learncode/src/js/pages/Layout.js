@@ -4,22 +4,13 @@
 //Components
 	import Footer from "../components/Footer";
 	import Todo from "../components/Todo"
+	import TodoStore from "../stores/TodoStore"
 class Layout extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			todos: [
-				{
-					id: 24601,
-					text: "Go Shopping",
-					complete: false
-				},
-				{
-					id: 12250,
-					text: "Pay Bills",
-					complete: false
-				}
-			],
+			//Llama ahora del Store, un estado inicial
+			todos: TodoStore.getAll(),
 		}
 	}
 
