@@ -20,7 +20,16 @@ ReactDOM.render(
 			<Switch>
 				<Route exact path="/" component={Layout}></Route>
 				<Route path="/Featured" component={Featured}></Route>
-				<Route path="/Archives" component={Archives}></Route>
+				{/*
+					<Route exact path="/Archives" component={Archives}></Route>
+					<Route path="/Archives/:article" component={Archives}></Route>
+					Si se desea que el link sea opcional.
+
+					Se puede resumir:
+				*/}
+				<Route path="/Archives/:article?" component={Archives}></Route>
+
+				{/*Se le pueden pasar queris tipo ?*/}
 				<Route path="/Settings" component={Settings}></Route>
 				<Route component={Page404}></Route>
 			</Switch>
