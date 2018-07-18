@@ -3,8 +3,9 @@
 
 //Components
 	import Footer from "../components/Footer";
-	import Todo from "../components/Todo"
-	import TodoStore from "../stores/TodoStore"
+	import Todo from "../components/Todo";
+	import * as TodoActions from "../actions/TodoActions";
+	import TodoStore from "../stores/TodoStore";
 class Layout extends React.Component{
 	constructor(){
 		super();
@@ -25,6 +26,9 @@ class Layout extends React.Component{
 
 	}
 
+	createTodo(){
+		TodoActions.createTodo(Date.now())
+	}
 	render(){
 
 		const {todos} = this.state;
@@ -36,6 +40,7 @@ class Layout extends React.Component{
 	      <div>
 	          <div class="row">
 	            <div class="col-lg-12">
+	            <button onClick={this.createTodo.bind(this)}>Create!</button>
 	              <h1>Todos</h1>
 	              <ul>{TodoComponents}</ul>
 	            </div>
