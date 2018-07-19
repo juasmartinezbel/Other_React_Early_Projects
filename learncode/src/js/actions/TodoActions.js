@@ -39,5 +39,5 @@ export function reloadTodos(){
 		if(false){
 			dispatcher.dispatch({type:"FETCH_TODOS_ERROR"})
 		}
-	}, 2000)
+	}, 1000)
 }

@@ -14,23 +14,33 @@ class Layout extends React.Component{
 			todos: TodoStore.getAll(),
 			loading: true
 		}
+
+		this.getTodos = this.getTodos.bind(this)
 	}
 
 	//Cuando se va a renderizar
 	//El emit de TodoStore llama a este método
 	componentWillMount(){
-		TodoStore.on("change", ()=>{
-			this.setState({
+		TodoStore.on("change", this.getTodos);
+		console.log("count", TodoStore.listenerCount("change"));
+		//Se aumenta porque solo rendetiza contadores una y otra vez cambiando pestaña. Debería ser 1
+	}
+
+	getTodos(){
+		this.setState({
 				todos: TodoStore.getAll()
 
-			});
 		});
-
+	}
+	//Evitar memory leaks
+	componentWillUnmount(){
+		TodoStore.removeListener("change", this.getTodos);
 	}
 
 	reloadTodos(){
 		TodoActions.reloadTodos()
 	}
+
 
 	render(){
 

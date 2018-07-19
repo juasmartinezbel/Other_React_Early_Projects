@@ -29,7 +29,6 @@ class TodoStore extends EventEmitter{
 			text,
 			complete: false,
 		});
-		console.log(this.todos)
 		this.emit("change"); //On Change, envía un mensaje de cambio a cualquiera que pueda tener este evento
 	}
 	getAll(){
