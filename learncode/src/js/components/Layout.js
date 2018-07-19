@@ -1,34 +1,26 @@
-//Dependencies
-	import React from "react";
+import React from "react";
 
-//Components
-	import Header from "./Header"
-	import Footer from "./Footer"
+import Footer from "./Footer";
+import Header from "./Header";
 
-class Layout extends React.Component{
-	constructor(){
-		//Solo en el constructor se definen estados
-		super();
-		this.state = {name: "Zebitas"}
-	}
+export default class Layout extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      title: "Welcome",
+    };
+  }
 
-	render(){
-		//No se recomienda porque no tienen llaves.
-		setTimeout(()=>{
-				this.setState({name: "Alejandra"})
-			}, 2000);
-		return (
-			
-			//REACT solo va a cambiar si uno de los componentes cambió, de resto, ni tocará el DOM
-			<div>		
+  changeTitle(title) {
+    this.setState({title});
+  }
 
-				<Header name={this.state.name} />
-				<h1>It's ALIVE</h1><br/>
-				<Footer />
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title} />
+        <Footer />
+      </div>
+    );
+  }
 }
-
-//Se puede requerir ahora en client.js
-export default Layout;

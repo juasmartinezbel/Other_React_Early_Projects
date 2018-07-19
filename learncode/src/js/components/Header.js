@@ -1,22 +1,19 @@
-//Dependencies
-	import React from "react";
+import React from "react";
 
-//Componentes
-	import Title from "./header/Title"
+import Title from "./Header/Title";
 
-class Header extends React.Component{
-	constructor(){
-		super();
-	}
+export default class Header extends React.Component {
+  handleChange(e) {
+    const title = e.target.value;
+    this.props.changeTitle(title);
+  }
 
-	render(){
-		return (
-			<div>
-				<Title name={this.props.name}/>
-				
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <Title title={this.props.title} />
+        <input value={this.props.title} onChange={this.handleChange.bind(this)} />
+      </div>
+    );
+  }
 }
-
-export default Header;
