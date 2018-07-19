@@ -12,6 +12,7 @@ class Layout extends React.Component{
 		this.state = {
 			//Llama ahora del Store, un estado inicial
 			todos: TodoStore.getAll(),
+			loading: true
 		}
 	}
 
@@ -21,14 +22,16 @@ class Layout extends React.Component{
 		TodoStore.on("change", ()=>{
 			this.setState({
 				todos: TodoStore.getAll()
+
 			});
 		});
 
 	}
 
-	createTodo(){
-		TodoActions.createTodo(Date.now())
+	reloadTodos(){
+		TodoActions.reloadTodos()
 	}
+
 	render(){
 
 		const {todos} = this.state;
@@ -40,7 +43,7 @@ class Layout extends React.Component{
 	      <div>
 	          <div class="row">
 	            <div class="col-lg-12">
-	            <button onClick={this.createTodo.bind(this)}>Create!</button>
+	            <button onClick={this.reloadTodos.bind(this)}>Reload!</button>
 	              <h1>Todos</h1>
 	              <ul>{TodoComponents}</ul>
 	            </div>

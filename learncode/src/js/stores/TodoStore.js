@@ -48,6 +48,13 @@ class TodoStore extends EventEmitter{
 				this.createTodo(action.text);
 				//Probar con: dispatcher.dispatch({type:"CREATE_TODO", text: "new todo"})
 			}
+
+			case "RECIEVE_TODOS":{
+				//Recibe el todo y emite señal de que haga cambio
+				this.todos = action.todos;
+				this.emit("change");
+					
+			}
 		}
 	}
 }
