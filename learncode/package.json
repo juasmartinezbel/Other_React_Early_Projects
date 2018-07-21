@@ -1,0 +1,43 @@
+{
+  "name": "learncode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --content-base src --inline --hot"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-html-attrs": "^2.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "flux": "^3.1.3",
+    "history": "^4.7.2",
+    "query-string": "^6.1.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+<<<<<<< HEAD
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+=======
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^5.1.1",
+    "redux-thunk": "^2.3.0",
+>>>>>>> learncode-redux
+    "webpack": "^4.16.1",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.0"
+  }
+}
