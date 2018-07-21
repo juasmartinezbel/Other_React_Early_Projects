@@ -2,51 +2,23 @@
 	import React from "react"
 	import ReactDOM from "react-dom";
 	import {applyMiddleware, createStore} from "redux";
-
-
-const reducer = function(state=0, action){
-  if(action.type === "INC"){ 
-    return state+1; 
-  }else if(action.type === "DEC"){ 
-    return state-1; 
-  } else if (action.type === "E"){
-  	throw new Error("AAAAAA CTM")
-  }
+	import {createLogger} from "redux-logger"; //npm install -S "redux-logger"
+	import thunk from "redux-thunk"; //npm install -S "redux-thunk"
+	import axios from "axios"; //npm install -S "axios"
+const reducer = function(state={}, action){
   return state 
 }
 
-// middleware que se configurará cada vez
-const logger = (store) => (next) => (action) =>{
-	console.log("action fired", action)
-	if(action.type==="INC"){
-		action.type="DEC"
-	}else if (action.type==="DEC"){
-		action.type="INC"
-	}
-	next(action);
-}
-
-const error = (store) => (next) => (action) =>{
-	try{
-		next(action);
-	}catch(e){
-		console.log(";__;", e);
-	}
-}
 							
-const middleware = applyMiddleware(logger, error); //Tantas , como sean necesarias para cada middleware
+const middleware = applyMiddleware(thunk, createLogger());
 
-const store = createStore(reducer, 
-							1, // Estado inicial 
-						middleware)
+const store = createStore(reducer, middleware)
 
-store.subscribe(()=>{
-	console.log("store changed", store.getState()); //No ejecutará por si solo a menos de que en logger se pase "next"
+//En vez de enviar un objeto, enviemos el despachador
+store.dispatch(dispatch =>{
+	dispatch({type: "FOO"})
+	//do something async
+	dispatch({type: "BAR"})
 })
 
-store.dispatch({type: "INC"})
-store.dispatch({type: "INC"})
-store.dispatch({type: "INC"})
-store.dispatch({type: "INC"})//Habrá un mensaje por dispatch
-store.dispatch({type: "DEC"})
-store.dispatch({type: "E"})
+//Es un montón de funciones sincronas
