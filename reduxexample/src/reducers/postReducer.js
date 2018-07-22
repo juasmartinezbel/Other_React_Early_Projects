@@ -18,7 +18,6 @@ export default function(state = initialState, action){
 
 			const u = {...state,
 				item: action.payload}//solo el post}
-			console.log(action.payload);
 			return u;
 		default:
 			return state;

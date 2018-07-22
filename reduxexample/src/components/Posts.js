@@ -10,6 +10,15 @@ class Posts extends React.Component{
     this.props.fetchPosts();   
   }
 
+  //Cuando reciba props:
+  componentWillReceiveProps(nextProps){
+    if(nextProps.newPost){
+      console.log(nextProps.newPost)
+      //Añadirlo a los posts de primero
+      this.props.posts.unshift(nextProps.newPost);
+    }
+  }
+
 	render(){
 
 		const postItems = this.props.posts.map(posts=>(
@@ -31,12 +40,14 @@ class Posts extends React.Component{
 //Restricciones:
 Posts.propTypes = {
   fetchPosts: PropTypes.func.isRequired,
-  posts: PropTypes.array.isRequired
+  posts: PropTypes.array.isRequired,
+  newPost: PropTypes.object
 }
 
 //Obtener el state de redux y volverlo props
 const mapStateToProps = state => ({
-  posts: state.posts.items //Se llama así porque en combineReducers en index lo llamé 'posts'
+  posts: state.posts.items, //Se llama así porque en combineReducers en index lo llamé 'posts'
+  newPost: state.posts.item //Recordatorio, es ITEM no ITEMS
 })
 
 export default connect(mapStateToProps, {fetchPosts})(Posts);
