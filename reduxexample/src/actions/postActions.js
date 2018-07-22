@@ -17,10 +17,6 @@ export function fetchPosts(){
 
 //Una forma más limpia
 export const fetchPosts = () => dispatch =>{
-	console.log("FETCHING, IGNORAR ERRORES AAAAAAAAAA");
-	console.log("FETCHING, IGNORAR ERRORES AAAAAAAAAA");
-	console.log("FETCHING, IGNORAR ERRORES AAAAAAAAAA");
-	console.log("FETCHING, IGNORAR ERRORES AAAAAAAAAA");
 	//El thunk nos permite llamar una función de dispatch directamente para hacer funciones asincronas
 	fetch('https://jsonplaceholder.typicode.com/posts') //Hacemos fetch del origen y retorna una promesa
 	.then(res => res.json()) //El resultado res se debe pasar a un json

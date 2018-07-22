@@ -15,7 +15,7 @@ class Posts extends React.Component{
 
 	render(){
 
-		const postItems = this.state.posts.map(posts=>(
+		const postItems = this.props.posts.map(posts=>(
         	<div key={posts.id}>
           	<h3>{posts.title}</h3>
           	<p>{posts.body}</p>
@@ -31,4 +31,9 @@ class Posts extends React.Component{
 	}
 }
 
-export default connect(null, {fetchPosts})(Posts);
+//Obtener el state de redux y volverlo props
+const mapStateToProps = state => ({
+  posts: state.posts.items //Se llama así porque en combineReducers en index lo llamé 'posts'
+})
+
+export default connect(mapStateToProps, {fetchPosts})(Posts);
