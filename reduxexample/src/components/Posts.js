@@ -1,12 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions'
 
 class Posts extends React.Component{
-	constructor (props){
-    	super(props);
-      //Ya no necesitamos constructor, todo será en el estado
-  }
 
   componentWillMount() {
     //Para llamar la acción
@@ -29,6 +26,12 @@ class Posts extends React.Component{
 			</div>
 		)
 	}
+}
+
+//Restricciones:
+Posts.propTypes = {
+  fetchPosts: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired
 }
 
 //Obtener el state de redux y volverlo props

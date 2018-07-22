@@ -12,6 +12,14 @@ export default function(state = initialState, action){
 				...state,
 				items: action.payload
 			};
+		case NEW_POST:
+			//No es que la base de datos se actualice
+			//Empujaremos esto a lo que ya teníamos
+
+			const u = {...state,
+				item: action.payload}//solo el post}
+			console.log(action.payload);
+			return u;
 		default:
 			return state;
 	}

@@ -1,7 +1,6 @@
 //Dependencies
   import React, { Component } from 'react'
   import { Provider } from 'react-redux'; //El pegamento entre react y redux
-  import { createStore, applyMiddleware } from 'redux';
 
 //Stylesheet
   import logo from './logo.svg';

@@ -25,3 +25,20 @@ export const fetchPosts = () => dispatch =>{
 		payload: posts
 	}));
 }
+							//argumento
+export const createPost = (postData) => dispatch =>{
+	console.log("U W U")
+	fetch('https://jsonplaceholder.typicode.com/posts', {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify(postData)
+	})
+	.then(res => res.json()) //<----- ESTO ES FUNDAMENTAAAAAAAAL
+	//.then(data=>console.log(data))
+	.then(new_post => dispatch({//Se hace un dispatch y su payload
+		type: NEW_POST,
+		payload: new_post
+	}));
+}
