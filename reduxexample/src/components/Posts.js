@@ -1,21 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/postActions'
 
 class Posts extends React.Component{
 	constructor (props){
     	super(props);
-    	this.state = {
-      		posts: []
-    	}
-  	}
+      //Ya no necesitamos constructor, todo será en el estado
+  }
 
+  componentWillMount() {
+    //Para llamar la acción
+    this.props.fetchPosts();   
+  }
 
-  	//Cuando el componente se monte, ejecutará la acción
-  	componentWillMount(){
-    	//console.log(123);
-		fetch('https://jsonplaceholder.typicode.com/posts') //Hacemos fetch del origen y retorna una promesa
-    	.then(res => res.json()) //El resultado res se debe pasar a un json
-    	.then(data => this.setState({posts:data}) ) //El resultado data del anterior se pasa al estado
-  	}
 	render(){
 
 		const postItems = this.state.posts.map(posts=>(
@@ -34,4 +31,4 @@ class Posts extends React.Component{
 	}
 }
 
-export default Posts;
+export default connect(null, {fetchPosts})(Posts);
